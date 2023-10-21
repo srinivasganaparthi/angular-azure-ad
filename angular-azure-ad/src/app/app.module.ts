@@ -1,13 +1,12 @@
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { DataTablesModule } from 'angular-datatables';
+//import { DataTablesModule } from 'angular-datatables';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MsalModule, MsalService, MSAL_INSTANCE, MsalInterceptor, MsalRedirectComponent, MsalGuard, MsalInterceptorConfiguration, MSAL_INTERCEPTOR_CONFIG } from '@azure/msal-angular';
 import { PublicClientApplication, InteractionType, IPublicClientApplication, BrowserCacheLocation } from '@azure/msal-browser';
-import { PolicyClientService } from './policy-client.service';
 
 export function MSALInstanceFactory(): IPublicClientApplication {
   return new PublicClientApplication({
@@ -40,7 +39,7 @@ export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
   imports: [
     BrowserModule,
     AppRoutingModule,
-    DataTablesModule,
+    //DataTablesModule,
     ReactiveFormsModule,
     MsalModule,
     HttpClientModule,
@@ -58,8 +57,8 @@ export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
       provide: MSAL_INTERCEPTOR_CONFIG,
       useFactory: MSALInterceptorConfigFactory
     },
-    MsalService,
-    PolicyClientService
+    MsalService
+    // PolicyClientService
   ],
   bootstrap: [AppComponent]
 })
